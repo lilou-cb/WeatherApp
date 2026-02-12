@@ -1,42 +1,645 @@
-#root {
-  max-width: 1280px;
+/* ===================== Layout ===================== */
+.app-container {
+  max-width: 960px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 24px 20px 48px;
+}
+
+/* ===================== Header ===================== */
+.app-header {
+  margin-bottom: 28px;
+}
+
+.header-top {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.app-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.search-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.search-form {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 5px 5px 5px 18px;
+  transition: var(--transition);
+}
+
+.search-form:focus-within {
+  border-color: rgba(129, 140, 248, 0.5);
+}
+
+.search-icon {
+  color: var(--text-muted);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-family: inherit;
+  padding: 10px 4px;
+  min-width: 0;
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-btn {
+  background: var(--accent-blue);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: 10px 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.search-btn:hover {
+  background: var(--accent-purple);
+}
+
+.locate-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  flex-shrink: 0;
+  font-size: 1.1rem;
+}
+
+.locate-btn:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(52, 211, 153, 0.4);
+}
+
+/* ===================== Grid System ===================== */
+.grid-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.grid-full {
+  margin-bottom: 16px;
+}
+
+/* ===================== Cards ===================== */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 22px;
+}
+
+/* no hover effect on cards */
+
+.card-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.unit-label {
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 400;
+}
+
+.no-data {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* ===================== Card: Weather ===================== */
+.weather-hero {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.weather-icon-wrap {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.weather-icon-wrap img {
+  width: 64px;
+  height: 64px;
+}
+
+.weather-main {
+  min-width: 0;
+}
+
+.weather-city {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.weather-temp {
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin: 2px 0;
+}
+
+.weather-temp span {
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.weather-desc {
+  font-size: 0.85rem;
+  text-transform: capitalize;
+  color: var(--text-secondary);
+}
+
+.weather-meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 14px;
+}
+
+.meta-item {
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.meta-label {
+  display: block;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 3px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
+.meta-value {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+/* ===================== Card: Verdict ===================== */
+.card-verdict {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* no radial pseudo-element */
+
+.verdict-good {
+  background: rgba(52, 211, 153, 0.1);
+  border-color: rgba(52, 211, 153, 0.2);
+}
+
+.verdict-bad {
+  background: rgba(248, 113, 113, 0.1);
+  border-color: rgba(248, 113, 113, 0.2);
+}
+
+.verdict-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  gap: 8px;
+}
+
+.verdict-icon {
+  font-size: 2.8rem;
+  line-height: 1;
+}
+
+/* Traffic light */
+.verdict-light {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px 6px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 20px;
+}
+
+.light {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  opacity: 0.18;
+  transition: var(--transition);
+}
+
+.light.red {
+  background: #f87171;
+}
+
+.light.orange {
+  background: #fbbf24;
+}
+
+.light.green {
+  background: #34d399;
+}
+
+.light.active {
+  opacity: 1;
+}
+
+.verdict-status {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.verdict-text {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* ===================== Card: UV ===================== */
+.uv-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.uv-gauge-wrap {
+  flex: 1;
+}
+
+.uv-gauge-track {
+  width: 100%;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.uv-gauge-fill {
+  height: 100%;
+  border-radius: 5px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.uv-gauge-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+  font-size: 0.6rem;
+  color: var(--text-muted);
+}
+
+.uv-reading {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.uv-number {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.uv-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.uv-advice {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* ===================== Card: Pollen ===================== */
+.pollen-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pollen-level-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.pollen-level-badge.low {
+  background: rgba(52, 211, 153, 0.12);
+  color: #34d399;
+}
+
+.pollen-level-badge.moderate {
+  background: rgba(251, 191, 36, 0.12);
+  color: #fbbf24;
+}
+
+.pollen-level-badge.high {
+  background: rgba(248, 113, 113, 0.12);
+  color: #f87171;
+}
+
+.pollen-flower {
+  font-size: 1.3rem;
+}
+
+.pollen-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pollen-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pollen-name {
+  width: 80px;
+  flex-shrink: 0;
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.pollen-bar-track {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.pollen-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 2px;
+}
+
+.pollen-val {
+  width: 30px;
+  text-align: right;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* ===================== Card: Chart ===================== */
+.chart-wrapper {
+  width: 100%;
+  height: 280px;
+}
+
+.chart-tooltip {
+  background: rgba(15, 15, 26, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+}
+
+.chart-tooltip-label {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+/* ===================== Card: Forecast ===================== */
+.forecast-scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.forecast-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+.forecast-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+.forecast-item {
+  flex: 0 0 140px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 14px 12px;
+  text-align: center;
+  scroll-snap-align: start;
+  transition: var(--transition);
+}
+
+.forecast-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.forecast-day {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+.forecast-icon {
+  width: 48px;
+  height: 48px;
+  margin: 4px auto;
+}
+
+.forecast-temp {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.forecast-desc {
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+  text-transform: capitalize;
+  margin-top: 2px;
+}
+
+.forecast-wind {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ===================== Footer ===================== */
+.app-footer {
+  text-align: center;
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.72rem;
+}
+
+/* ===================== Loading / Error ===================== */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  gap: 16px;
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--border-color);
+  border-top-color: var(--accent-blue);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
   to {
     transform: rotate(360deg);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+.loading-text {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.error-state {
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.error-emoji {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.error-message {
+  color: var(--accent-red);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* ===================== Animations ===================== */
+.fade-in {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-.card {
-  padding: 2em;
-}
+/* ===================== Responsive ===================== */
+@media (max-width: 640px) {
+  .app-container {
+    padding: 16px 12px 36px;
+  }
 
-.read-the-docs {
-  color: #888;
+  .grid-row-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .weather-temp {
+    font-size: 2.2rem;
+  }
+
+  .weather-meta {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .verdict-icon {
+    font-size: 2rem;
+  }
+
+  .search-form {
+    padding: 4px 4px 4px 12px;
+  }
+
+  .search-btn {
+    padding: 9px 14px;
+    font-size: 0.78rem;
+  }
+
+  .forecast-item {
+    flex: 0 0 120px;
+  }
 }
