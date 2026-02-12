@@ -10,9 +10,7 @@
 
 ## Aperçu de l'interface
 
-<p align="center">
-  <img src="assets/AppScreenshot.png" alt="Aperçu du Dashboard" width="700">
-</p>
+![Aperçu de l'interface](assets/screenshot.png)
 
 ## Fonctionnalités Clés et Données
 
